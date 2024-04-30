@@ -285,7 +285,19 @@ cas:
 logging:
   level:
     org.flywaydb: debug
+    org.jeecgframework.minidao.factory: error
     org.jeecg.modules.system.mapper: info
+    org:
+      springframework:
+        context:
+          support: error
+    springfox:
+      documentation:
+        spring:
+          web:
+            readers:
+              operation:
+                CachingOperationNameGenerator: warn
 #swagger
 knife4j:
   #开启增强配置
