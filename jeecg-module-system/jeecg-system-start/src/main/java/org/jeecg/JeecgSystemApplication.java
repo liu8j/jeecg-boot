@@ -1,12 +1,22 @@
 package org.jeecg;
 
+import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration;
+import org.apache.shiro.spring.boot.autoconfigure.ShiroAutoConfiguration;
+import org.apache.shiro.spring.boot.autoconfigure.ShiroBeanAutoConfiguration;
 import org.jeecg.common.util.oConvertUtils;
+import org.jeecg.config.shiro.ShiroRealm;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 
 import java.net.InetAddress;
@@ -18,8 +28,9 @@ import java.net.UnknownHostException;
 */
 @Slf4j
 @SpringBootApplication
-//@EnableAutoConfiguration(exclude={MongoAutoConfiguration.class})
+@EnableAutoConfiguration(exclude={MongoAutoConfiguration.class,DruidDataSourceAutoConfigure.class})
 public class JeecgSystemApplication extends SpringBootServletInitializer {
+
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
